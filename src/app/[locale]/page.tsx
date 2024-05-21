@@ -1,6 +1,11 @@
+'use client'
+
 import {useTranslations} from 'next-intl';
 import {unstable_setRequestLocale} from 'next-intl/server';
 import PageLayout from '@/components/PageLayout';
+import Button from '@/components/Button';
+import {useRouter, usePathname} from '@/navigation';
+
 
 type Props = {
   params: {locale: string};
@@ -8,9 +13,15 @@ type Props = {
 
 export default function IndexPage({params: {locale}}: Props) {
   // Enable static rendering
-  unstable_setRequestLocale(locale);
+  // unstable_setRequestLocale(locale);
 
   const t = useTranslations('IndexPage');
+
+  const router = useRouter()
+
+  const gotoPage = () => {
+    router.push('/order')
+  }
 
   return (
     <PageLayout title={t('title')}>
@@ -21,6 +32,7 @@ export default function IndexPage({params: {locale}}: Props) {
           )
         })}
       </p>
+      <Button onClick={gotoPage}>click me click me</Button>
     </PageLayout>
   );
 }
