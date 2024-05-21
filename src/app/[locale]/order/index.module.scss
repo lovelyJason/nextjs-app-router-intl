@@ -1,0 +1,6 @@
+.page {
+  $h5-header-height: 118px;
+  @media screen and (max-width: 1280px) {
+    margin-top: $h5-header-height;
+  }
+}
